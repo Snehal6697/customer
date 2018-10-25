@@ -108,10 +108,10 @@
 			</table>
 
 		</div>
+		<br>
 
 	</div>
 
-	<p></p>
 	
 	<!-- Add a back to home page button -->
 	<a><form:form action="${pageContext.request.contextPath}/"

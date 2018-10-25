@@ -23,7 +23,7 @@ input {
 .save {
 	font-weight: bold;
 	width: 130px; 
-	padding: 5px 10px; 
+	padding: 10px;
 	margin-top: 30px;
 	background: #cccccc;
 }
