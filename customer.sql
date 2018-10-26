@@ -5,9 +5,9 @@ use customers;
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(45) NULL DEFAULT NULL,
-  `last_name` VARCHAR(45) NULL DEFAULT NULL,
-  `email` VARCHAR(45) NULL DEFAULT NULL,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB DEFAULT CHARSET = latin1;
 

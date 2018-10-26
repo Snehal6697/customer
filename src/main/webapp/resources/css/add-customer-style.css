@@ -28,6 +28,8 @@ input {
 	background: #cccccc;
 }
 
+.error {color:red}
+
 table {   
 	border-style:none;
 	width:50%;

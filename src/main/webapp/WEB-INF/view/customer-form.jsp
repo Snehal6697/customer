@@ -35,16 +35,19 @@
 					<tr>
 						<td><label>First name:</label></td>
 						<td><form:input path="firstName" /></td>
+						<td><form:errors path="firstName" cssClass="error" /></td>
 					</tr>
 
 					<tr>
 						<td><label>Last name:</label></td>
 						<td><form:input path="lastName" /></td>
+						<td><form:errors path="lastName" cssClass="error" /></td>
 					</tr>
 
 					<tr>
 						<td><label>Email:</label></td>
 						<td><form:input path="email" /></td>
+						<td><form:errors path="email" cssClass="error" /></td>
 					</tr>
 
 					<tr>
