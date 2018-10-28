@@ -14,9 +14,14 @@ import com.zeljko.springdemo.entity.Customer;
 public class CustomerDAOImpl implements CustomerDAO {
 
 	// need to inject the session factory
-	@Autowired
+
 	private SessionFactory sessionFactory;
-			
+
+	@Autowired
+	public CustomerDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	@Override
 	public List<Customer> getCustomers() {
 		

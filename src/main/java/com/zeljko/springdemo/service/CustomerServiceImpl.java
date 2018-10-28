@@ -13,9 +13,14 @@ import com.zeljko.springdemo.entity.Customer;
 public class CustomerServiceImpl implements CustomerService {
 
 	// need to inject customer dao
-	@Autowired
+
 	private CustomerDAO customerDAO;
-	
+
+	@Autowired
+	public CustomerServiceImpl(CustomerDAO customerDAO) {
+		this.customerDAO = customerDAO;
+	}
+
 	@Override
 	@Transactional
 	public List<Customer> getCustomers() {
