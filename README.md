@@ -7,3 +7,4 @@ Spring MVC App with CRUD and security
 ![](images/delete.png)
 ![](images/list.png)
 ![](images/add.png)
+![](images/workbench.png)
