@@ -84,6 +84,8 @@
 							<div class="col-sm-6 controls">
 								<button type="submit" class="btn btn-primary">Delete</button>
 							</div>
+							<a href="${pageContext.request.contextPath}/user/list" class="btn btn-primary">Back to
+                            List</a>
 						</div>
 
 					</form:form>
