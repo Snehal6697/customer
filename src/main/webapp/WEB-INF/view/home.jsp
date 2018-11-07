@@ -24,11 +24,10 @@
 
 	<!-- display username and role -->
 	
-
 	<p>
-		User:  <span style="color:blue"><security:authentication property="principal.username" /></span>
-		<br>
-		Role: <security:authentication property="principal.authorities" />
+		<h4>User:  <span style="color:blue"><security:authentication property="principal.username" /></span>
+		<br><br>
+		Role: <security:authentication property="principal.authorities" /></h4>
 		<br>
 	</p>
 
@@ -70,7 +69,7 @@
 	<form:form action="${pageContext.request.contextPath}/logout" 
 		method="POST">
 
-		<input type="submit" class="btn btn-primary" value="Logout" />
+		<input type="submit" class="btn btn-danger" value="Logout" />
 
 	</form:form>
 	</div>

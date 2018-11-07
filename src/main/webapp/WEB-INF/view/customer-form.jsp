@@ -1,92 +1,59 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-<title>Save Customer</title>
+    <title>Save Customer</title>
 
- <!-- Reference Bootstrap files -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.css">
-
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/add-customer-style.css">
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/css/add-customer-style.css">
 </head>
 
 <body>
+<h2>Add/Update New Customer</h2>
 
-	<div id="wrapper">
-		<div id="header">
-			<h2>Add/Update New Customer</h2>
-		</div>
-	</div>
+<br>
+<form:form action="saveCustomer" modelAttribute="customer"
+           method="POST">
 
-	<div id="container">
+    <!-- need to associate this data with customer id -->
+    <form:hidden path="id"/>
 
-		<br>
-		<form:form action="saveCustomer" modelAttribute="customer"
-			method="POST">
+    <table>
+        <tbody>
+        <tr>
+            <td><label>First name:</label></td>
+            <td><form:input path="firstName"/></td>
+            <td><form:errors path="firstName" cssClass="error"/></td>
+        </tr>
 
-			<!-- need to associate this data with customer id -->
-			<form:hidden path="id" />
+        <tr>
+            <td><label>Last name:</label></td>
+            <td><form:input path="lastName"/></td>
+            <td><form:errors path="lastName" cssClass="error"/></td>
+        </tr>
 
-			<table>
-				<tbody>
-					<tr>
-						<td><label>First name:</label></td>
-						<td><form:input path="firstName" /></td>
-						<td><form:errors path="firstName" cssClass="error" /></td>
-					</tr>
+        <tr>
+            <td><label>Email:</label></td>
+            <td><form:input path="email"/></td>
+            <td><form:errors path="email" cssClass="error"/></td>
+        </tr>
 
-					<tr>
-						<td><label>Last name:</label></td>
-						<td><form:input path="lastName" /></td>
-						<td><form:errors path="lastName" cssClass="error" /></td>
-					</tr>
+        <tr>
+            <td><label></label></td>
+            <td><input type="submit" value="Save" class="save"/></td>
+        </tr>
+        </tbody>
+    </table>
 
-					<tr>
-						<td><label>Email:</label></td>
-						<td><form:input path="email" /></td>
-						<td><form:errors path="email" cssClass="error" /></td>
-					</tr>
+</form:form>
 
-					<tr>
-						<td><label></label></td>
-						<td><input type="submit" value="Save" class="save" /></td>
-					</tr>
-
-
-				</tbody>
-			</table>
-
-
-		</form:form>
-
-
-		<p>
-			<a href="${pageContext.request.contextPath}/customer/list" class="btn btn-primary" >Back
-				to List</a>
-		</p>
-
-	</div>
+<p>
+    <a href="${pageContext.request.contextPath}/customer/list">Back
+        to List</a>
+</p>
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-

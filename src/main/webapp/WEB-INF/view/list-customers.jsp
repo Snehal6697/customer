@@ -1,134 +1,106 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+           uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 
 <html>
 
 <head>
-<title>List Customers</title>
+    <!-- Reference Bootstrap files -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!-- reference our style sheet -->
-
-
-	
-	<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	
-	<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.css" />
+    <title>List Customers</title>
 
 </head>
 <body>
 
-	<div id="wrapper">
-		<div id="header">
-			<h2>Customer List</h2>
-		</div>
-	</div>
+<div class="container">
 
-	<div id="container">
+    <h2>Customer List</h2>
 
-		<div id="content">
+    <br>
+    <!--  add our html table here -->
 
-			<p>
-				User:
-				<span style="color:blue"><security:authentication property="principal.username" /></span>
-				, Role:
-				<security:authentication property="principal.authorities" />
-			</p>
+    <table class="table table-striped">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+
+            <%-- Only show "Action" column for managers or admin --%>
+            <security:authorize access="hasAnyRole('MENADZER', 'ADMIN')">
+
+                <th>Actions</th>
+
+            </security:authorize>
+
+        </tr>
+
+        <!-- loop over and print our customers -->
+        <c:forEach var="tempCustomer" items="${customers}">
+
+            <!-- construct an "update" link with customer id -->
+            <c:url var="updateLink" value="/customer/showFormForUpdate">
+                <c:param name="customerId" value="${tempCustomer.id}"/>
+            </c:url>
+
+            <!-- construct an "delete" link with customer id -->
+            <c:url var="deleteLink" value="/customer/delete">
+                <c:param name="customerId" value="${tempCustomer.id}"/>
+            </c:url>
+
+            <tr>
+                <td>${tempCustomer.firstName}</td>
+                <td>${tempCustomer.lastName}</td>
+                <td>${tempCustomer.email}</td>
 
 
-			<security:authorize access="hasAnyRole('MENADZER', 'ADMIN')">
-
-				<!-- put new button: Add Customer -->
-
-				<input type="button" value="Add Customer"
-					onclick="window.location.href='showFormForAdd'; return false;"
-					class="add-button" />
-
-
-			</security:authorize>
+                <td><security:authorize access="hasAnyRole('MENADZER', 'ADMIN')">
+                    <!-- display the update link -->
+                    <a href="${updateLink}">Update</a>
+                    <security:authorize access="hasRole('ADMIN')">
+                        <a href="${deleteLink}"
+                           onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+                    </security:authorize>
+                </security:authorize></td>
 
 
-			<!--  add our html table here -->
+            </tr>
 
-			<table>
-				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
+        </c:forEach>
 
-					<%-- Only show "Action" column for managers or admin --%>
-					<security:authorize access="hasAnyRole('MENADZER', 'ADMIN')">
+    </table>
 
-						<th>Action</th>
 
-					</security:authorize>
+    <security:authorize access="hasAnyRole('MENADZER', 'ADMIN')">
 
-				</tr>
+        <!-- put new button: Add New Customer -->
 
-				<!-- loop over and print our customers -->
-				<c:forEach var="tempCustomer" items="${customers}">
+       <div>
+<p>
+        <input type="button" value="Add New Customer"
+               onclick="window.location.href='showFormForAdd'; return false;"
+               class="btn btn-primary"/>
+</p>
+       </div>
 
-					<!-- construct an "update" link with customer id -->
-					<c:url var="updateLink" value="/customer/showFormForUpdate">
-						<c:param name="customerId" value="${tempCustomer.id}" />
-					</c:url>
+    </security:authorize>
 
-					<!-- construct an "delete" link with customer id -->
-					<c:url var="deleteLink" value="/customer/delete">
-						<c:param name="customerId" value="${tempCustomer.id}" />
-					</c:url>
+    <!-- Add a back to home page button -->
+    <a><form:form action="${pageContext.request.contextPath}/"
+                  method="POST">
 
-					<tr>
-						<td>${tempCustomer.firstName}</td>
-						<td>${tempCustomer.lastName}</td>
-						<td>${tempCustomer.email}</td>
+        <input type="submit" value="Go to Home Page" class="btn btn-danger"/>
 
-						<security:authorize access="hasAnyRole('MENADZER', 'ADMIN')">
+    </form:form> </a>
+    <br>
 
-							<td><security:authorize
-									access="hasAnyRole('MENADZER', 'ADMIN')">
-									<!-- display the update link -->
-									<a href="${updateLink}">Update</a>
-								</security:authorize> <security:authorize access="hasAnyRole('ADMIN')">
-									<a href="${deleteLink}"
-										onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
-								</security:authorize></td>
-
-						</security:authorize>
-
-					</tr>
-
-				</c:forEach>
-
-			</table>
-
-		</div>
-		<br>
-
-	</div>
-
-	
-	<!-- Add a back to home page button -->
-	<a><form:form action="${pageContext.request.contextPath}/"
-		method="POST">
-
-		<input type="submit" value="Home page" class="add-button" />
-
-	</form:form> </a>
-
-	<!-- Add a logout button -->
-	<a><form:form action="${pageContext.request.contextPath}/logout"
-		method="POST">
-
-		<input type="submit" value="Logout" class="add-button" />
-
-	</form:form></a>
-
+</div>
 </body>
 
 </html>

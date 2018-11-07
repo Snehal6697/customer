@@ -1,3 +1,8 @@
+html, body{
+	margin-left:30px;
+	padding:0px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
 form {
 	margin-top: 10px;
 }
@@ -14,21 +19,35 @@ label {
 
 input {
 	width: 250px;
-	border: 1px solid #666; 
+	border: 1px solid #667;
 	border-radius: 5px; 
 	padding: 4px; 
 	font-size: 16px;
 }
 
 .save {
-	font-weight: bold;
-	width: 130px; 
-	padding: 10px;
-	margin-top: 30px;
-	background: #cccccc;
+	background-color: #316ac3;
+	color: white;
+	width: 80px;
+	padding: 8px 15px;
+	margin-top: 10px;
+	border-radius: 5px;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 .error {color:red}
+
+a:link, a:visited {
+	background-color: #316ac3;
+	color: white;
+	padding: 8px 15px;
+	border-radius: 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}
 
 table {   
 	border-style:none;

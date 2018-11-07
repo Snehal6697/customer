@@ -1,114 +1,77 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 
 <html>
 
 <head>
-<title>List Users</title>
+    <!-- Reference Bootstrap files -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!-- reference our style sheet -->
-
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	
-	<link type="text/css" href="<c:url value='/resources/css/style.css' />"
-	rel="stylesheet" />
-	
+    <title>List Users</title>
 
 </head>
 
 <body>
 
-	<div id="wrapper">
-		<div id="header">
-			<h2>User List</h2>
-		</div>
-	</div>
+<div class="container">
+    <h2>User List</h2>
 
-	<br>
+    <br>
 
-	<a
-		href="${pageContext.request.contextPath}/register/showRegistrationForm"
-		class="btn btn-primary" role="button" aria-pressed="true">Register
-		New User</a>
-	<a href="${pageContext.request.contextPath}/register/showDeleteForm"
-		class="btn btn-primary" role="button" aria-pressed="true">Delete
-		User</a>
+    <div>
+        <p>
 
+            <a href="${pageContext.request.contextPath}/register/showRegistrationForm"
+                    class="btn btn-primary" role="button" aria-pressed="true">Register
+                New User</a>
+            <a href="${pageContext.request.contextPath}/register/showDeleteForm"
+               class="btn btn-danger" role="button" aria-pressed="true">Delete
+                User</a>
+        </p>
+    </div>
 
-	<div></div>
+    <!--  add our html table here -->
 
+    <table class="table table-striped">
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
 
-	<div id="container">
+        </tr>
 
+        <!-- loop over and print our users -->
+        <c:forEach var="tempUser" items="${users}">
 
+            <tr>
+                <td>${tempUser.username}</td>
+                <td>${tempUser.password}</td>
 
-		<div id="content">
+            </tr>
 
-			<!-- put new button: Add User -->
+        </c:forEach>
 
+    </table>
+    <br>
 
+    <div>
 
-			<!--  add our html table here -->
+        <!-- Add a back to home page button -->
 
-			<table>
-				<tr>
-					<th>Username</th>
-					<th>Password</th>
+        <a> <form:form action="${pageContext.request.contextPath}/"
+                       method="POST">
 
-				</tr>
+            <input type="submit" value="Back to Home Page" class="btn btn-primary"/>
 
-				<!-- loop over and print our users -->
-				<c:forEach var="tempUser" items="${users}">
+        </form:form>
+        </a>
 
-
-
-					<tr>
-						<td>${tempUser.username}</td>
-						<td>${tempUser.password}</td>
-
-
-
-
-					</tr>
-
-				</c:forEach>
-
-			</table>
-
-		</div>
-
-	</div>
-
-	<br>
-
-	<div>
-
-		<!-- Add a back to home page button -->
-
-		<a> <form:form action="${pageContext.request.contextPath}/"
-				method="POST">
-
-				<input type="submit" value="Home page" class="add-button" />
-
-			</form:form>
-		</a>
-
-
-		<!-- Add a logout button -->
-
-		<a> <form:form action="${pageContext.request.contextPath}/logout"
-				method="POST">
-
-				<input type="submit" value="Logout" class="add-button" />
-
-			</form:form>
-		</a>
-	</div>
-
+    </div>
+</div>
 </body>
 
 </html>
