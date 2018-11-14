@@ -1,5 +1,5 @@
 # customer
-Spring MVC App with CRUD and security
+Spring MVC CRUD with security and JSP
 
 ![](images/login.png)
 ![](images/logout.png)
