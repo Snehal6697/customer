@@ -13,14 +13,11 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Reference Bootstrap files -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -42,7 +39,7 @@
 					<!-- Delete Form -->
 					<form:form
 						action="${pageContext.request.contextPath}/register/processDeleteForm"
-						modelAttribute="crmUser" class="form-horizontal">
+						modelAttribute="users" class="form-horizontal">
 
 						<!-- Place for messages: error, alert etc ... -->
 						<div class="form-group">
@@ -66,7 +63,7 @@
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span>
 
-							<form:input path="userName" placeholder="username"
+							<form:input path="username" placeholder="username"
 								class="form-control" />
 						</div>
 

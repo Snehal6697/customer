@@ -56,7 +56,7 @@ public class CustomerController {
 		// add the customers to the model
 		theModel.addAttribute("customers", theCustomers);
 		
-		return "list-customers";
+		return "list_customers";
 	}
 	
 	@GetMapping("/showFormForAdd")
@@ -67,7 +67,7 @@ public class CustomerController {
 		
 		theModel.addAttribute("customer", theCustomer);
 		
-		return "customer-form";
+		return "customer_form";
 	}
 	
 	@PostMapping("/saveCustomer")
@@ -75,7 +75,7 @@ public class CustomerController {
 			@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult) {
 		
 		if (theBindingResult.hasErrors()) {
-			return "customer-form";
+			return "customer_form";
 		}
 		else {
 			// save the customer using our service
@@ -98,7 +98,7 @@ public class CustomerController {
 		theModel.addAttribute("customer", theCustomer);
 		
 		// send over to our form		
-		return "customer-form";
+		return "customer_form";
 	}
 	
 	@GetMapping("/delete")

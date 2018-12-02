@@ -9,20 +9,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User {
+public class Users {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="username")
 	private String username;
-	
-	@Column(name="password")
 	private String password;
-	
-	@Column(name="enabled")
 	private boolean enabled;
 	
-	public User() {
+	public Users() {
 		
 	}
 

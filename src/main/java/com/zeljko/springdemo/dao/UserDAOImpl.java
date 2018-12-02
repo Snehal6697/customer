@@ -8,63 +8,32 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.zeljko.springdemo.entity.User;
+import com.zeljko.springdemo.entity.Users;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
 
 	// need to inject the session factory
-	@Autowired
 	private SessionFactory sessionFactory;
 
+	@Autowired
+	public UserDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	@Override
-	public List<User> getUsers() {
+	public List<Users> getUsers() {
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 
 		// create a query ... sort by password
-		Query<User> theQuery = currentSession.createQuery("from User order by password", User.class);
+		Query<Users> theQuery = currentSession.createQuery("from Users order by password", Users.class);
 
 		// execute query and get result list
-		List<User> users = theQuery.getResultList();
+		List<Users> users = theQuery.getResultList();
 
 		// return the results
 		return users;
-	}
-
-	@Override
-	public void saveUser(User theUser) {
-
-		// get current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-
-		// save/update the user ... finally LOL
-		currentSession.saveOrUpdate(theUser);
-
-	}
-
-	@Override
-	public User getUser(String theUsername) {
-
-		// get the current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-
-		// now retrieve/read from database using the primary key
-		User theUser = currentSession.get(User.class, theUsername);
-		return theUser;
-	}
-
-	@Override
-	public void deleteUser(String theUsername) {
-
-		// get the current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-
-		// delete object with primary key
-		Query theQuery = currentSession.createQuery("delete from User where id=:username");
-		theQuery.setParameter("username", theUsername);
-
-		theQuery.executeUpdate();
 	}
 
 }

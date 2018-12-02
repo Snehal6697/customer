@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class CRMLoggingAspect {
+public class CustomerAspect {
 
 	// setup logger
 	private Logger myLogger = Logger.getLogger(getClass().getName());

@@ -7,43 +7,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zeljko.springdemo.dao.UserDAO;
-import com.zeljko.springdemo.entity.User;
+import com.zeljko.springdemo.entity.Users;
 
 @Service
 public class UserServiceImpl implements UserService {
 
 	// need to inject user dao
-	@Autowired
 	private UserDAO userDAO;
 
+	@Autowired
+	public UserServiceImpl(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+
 	@Override
 	@Transactional
-	public List<User> getUsers() {
+	public List<Users> getUsers() {
 
 		return userDAO.getUsers();
-	}
-
-	@Override
-	@Transactional
-	public void saveUser(User theUser) {
-
-		userDAO.saveUser(theUser);
-
-	}
-
-	@Override
-	@Transactional
-	public User getUser(String theUsername) {
-
-		return userDAO.getUser(theUsername);
-	}
-
-	@Override
-	@Transactional
-	public void deleteUser(String theUsername) {
-
-		userDAO.deleteUser(theUsername);
-
 	}
 
 }

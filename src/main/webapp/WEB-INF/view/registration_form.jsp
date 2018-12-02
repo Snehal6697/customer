@@ -38,7 +38,7 @@
 
 					<!-- Registration Form -->
 					<form:form action="${pageContext.request.contextPath}/register/processRegistrationForm" 
-						  	   modelAttribute="crmUser"
+						  	   modelAttribute="users"
 						  	   class="form-horizontal">
 
 					    <!-- Place for messages: error, alert etc ... -->
@@ -63,7 +63,7 @@
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
 							
-							<form:input path="userName" placeholder="username" class="form-control" />
+							<form:input path="username" placeholder="username" class="form-control" />
 						</div>
 
 						<!-- Password -->
