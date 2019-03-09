@@ -178,7 +178,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
 		txManager.setSessionFactory(sessionFactory);
 
 		return txManager;
-	}	
+	}
 	
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

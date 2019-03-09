@@ -6,6 +6,6 @@ import com.zeljko.springdemo.entity.Users;
 
 public interface UserService {
 
-	public List<Users> getUsers();
+    List<Users> getUsers();
 
 }

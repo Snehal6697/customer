@@ -62,9 +62,9 @@
 
                 <td><security:authorize access="hasAnyRole('MENADZER', 'ADMIN')">
                     <!-- display the update link -->
-                    <a href="${updateLink}">Update</a>
+                    <a class="btn btn-primary btn-xs" href="${updateLink}">Update</a>
                     <security:authorize access="hasRole('ADMIN')">
-                        <a href="${deleteLink}"
+                        <a class="btn btn-danger btn-xs" href="${deleteLink}"
                            onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
                     </security:authorize>
                 </security:authorize></td>
@@ -81,13 +81,13 @@
 
         <!-- put new button: Add New Customer -->
 
-       <div>
-<p>
-        <input type="button" value="Add New Customer"
-               onclick="window.location.href='showFormForAdd'; return false;"
-               class="btn btn-primary"/>
-</p>
-       </div>
+        <div>
+            <p>
+                <input style="margin-top: 20px" type="button" value="Add New Customer"
+                       onclick="window.location.href='showFormForAdd'; return false;"
+                       class="btn btn-primary"/>
+            </p>
+        </div>
 
     </security:authorize>
 

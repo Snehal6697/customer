@@ -88,8 +88,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("customerId") int theId,
-									Model theModel) {
+	public String showFormForUpdate(@RequestParam("customerId") int theId, Model theModel) {
 		
 		// get the customer from our service
 		Customer theCustomer = customerService.getCustomer(theId);	

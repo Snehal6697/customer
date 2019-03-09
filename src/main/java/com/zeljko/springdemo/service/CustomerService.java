@@ -6,12 +6,12 @@ import com.zeljko.springdemo.entity.Customer;
 
 public interface CustomerService {
 
-	public List<Customer> getCustomers();
+    List<Customer> getCustomers();
 
-	public void saveCustomer(Customer theCustomer);
+    void saveCustomer(Customer theCustomer);
 
-	public Customer getCustomer(int theId);
+    Customer getCustomer(int theId);
 
-	public void deleteCustomer(int theId);
-	
+    void deleteCustomer(int theId);
+
 }
